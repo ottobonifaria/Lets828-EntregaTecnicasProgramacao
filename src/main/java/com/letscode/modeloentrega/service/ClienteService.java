@@ -98,6 +98,7 @@ public class ClienteService implements iClienteService {
         return listaClientes.stream()
                 .filter(x -> x.getGenero().equals('F'))
                 .filter(z-> (ChronoUnit.YEARS.between(z.getDataNascimento(),LocalDate.now()))>=30)
+                .sorted(Comparator.comparing(Cliente::getDataNascimento))
                 .limit(3)
                 .collect(Collectors.toList());
 
